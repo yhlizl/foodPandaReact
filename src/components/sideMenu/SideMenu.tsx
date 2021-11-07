@@ -6,6 +6,8 @@ import { GifOutlined } from '@ant-design/icons'
 const SideMenu = () => {
     const list = data.data.items
     let diff: { [key: string]: string } = {}
+    let meals: { [key: string]: string[] } = {}
+
     return (
         <div className={styles.sidebar}>
             <Menu mode={'vertical'}>
@@ -14,9 +16,12 @@ const SideMenu = () => {
                         return null
                     }
                     diff[item.characteristics.cuisines[0].name] = item.characteristics.cuisines[0].name
-
+                    meals[item.characteristics.cuisines[0].name]=[]
+                    meals[item.characteristics.cuisines[0].name].push(item.characteristics.cuisines[0].name)
+                    
                         return (<Menu.SubMenu key={ind}
                             title={<span><GifOutlined />  {item.characteristics.cuisines[0].name}</span>}
+
                         >
                         </Menu.SubMenu>)
                     
